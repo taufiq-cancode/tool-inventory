@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Category;
+
 
 class Tool extends Model
 {
     use HasFactory;
 
-    public function categories(){
+   
+    public function category(){
         return $this->belongsTo(Category::class);
     }
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tool;
+use App\Models\Category;
+
 
 class ToolController extends Controller
 {
@@ -13,6 +15,7 @@ class ToolController extends Controller
     }
 
     public function ToolAdd(){
+        $data['allData'] = Category::all();
         return view('tool.add_tool', $data);
     }
 
@@ -38,9 +41,20 @@ class ToolController extends Controller
         return redirect()->route('tool.view')->with($notification);
     }
 
+    public function ToolDetail($id){
+      
+        $tool = Tool::with('transactions')->findOrFail($id);
+        return view('tool.detail_tool', compact('tool'));
+
+    }
+
     public function ToolEdit($id){
-        $editData = Tool::find($id);
-        return view('tool.edit_tool', compact('editData'));
+
+        $data['tool'] = Tool::find($id);
+        $data['categories'] = Category::all();
+        //dd($data);
+    
+        return view('tool.edit_tool', $data);
     }
 
     public function ToolUpdate(Request $request, $id){
@@ -66,7 +80,8 @@ class ToolController extends Controller
     }
 
     public function ToolDelete($id){
-        $tool = Tool::find($id);
+        $tool = Tool::findOrFail($id);
+        $tool->transactions()->delete();
         $tool->delete();
 
         $notification = array(

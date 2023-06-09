@@ -9,7 +9,16 @@ class Transaction extends Model
 {
     use HasFactory;
 
-    public function tools(){
+    public function tool(){
         return $this->belongsTo(Tool::class);
     }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
+
