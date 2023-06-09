@@ -1,0 +1,53 @@
+.table-responsive {
+    overflow-x: hidden;
+}
+form.user .form-control-user {
+    border-radius: 0.5rem;
+}
+form.user .btn-user {
+    border-radius: 0.5rem;
+}
+.bg-gradient-primary {
+    background-color: red;
+    background-image: linear-gradient(180deg, red 10%, red 100%);
+    background-size: cover;
+}
+.sidebar-dark .nav-item .nav-link {
+    color: rgb(255 255 255 / 95%);
+}
+.sidebar-dark .nav-item .nav-link i {
+    color: rgba(255, 255, 255, 0.7);
+}
+.sidebar-dark hr.sidebar-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: red;
+    border-color: #ef0000d1;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #ef0000d1;
+    border-color: red;
+}
+.text-primary {
+    color: red;
+}
+select {
+    word-wrap: normal;
+    width: 100%;
+    padding: 13px;
+    border-radius: 7px;
+    border-color: lightgrey;
+}
+form.user .form-control-user {
+    font-size: 0.8rem;
+    color: black;
+    padding: 1.5rem 1rem;
+}
+.table-bordered td,
+.table-bordered th {
+    border: 1px solid #dddddd;
+    color: rgb(43, 43, 43);
+}
