@@ -22,6 +22,7 @@
                                 <li><b>Tool Name:</b> {{ $tool->name }}</li>
                                 <li><b>Category:</b> @if($tool->category) {{ $tool->category->name }} @else Uncategorized @endif</li>
                                 <li><b>Cost:</b> N{{ number_format($tool->cost) }}</li>
+                                <li><b>Quantity:</b> {{ $tool->quantity }}</li>
                                 <li><b>Supplier:</b> {{ $tool->supplier }}</li>
                                 <li><b>Location:</b> {{ $tool->location }}</li>
                                 <li><b>Condition:</b> {{ $tool->condition }}</li>

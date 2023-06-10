@@ -23,7 +23,21 @@ class TransactionController extends Controller
     }
 
     public function TransactionStore(Request $request){
-      
+                
+        $toolId = $request->input('tool_id');
+        $transactionQuantity = $request->input('quantity');
+
+        $tool = Tool::findOrFail($toolId);
+
+        if ($tool->quantity < $transactionQuantity){
+
+            $notification = array(
+                'message'=> 'Error creating transaction. Transaction quantity higher than quantity in store',
+                'alert-type' => 'error',
+            );
+            return back()->with($notification);
+        }
+
         $data = new Transaction();
         $data->tool_id = $request->tool_id;
         $data->user_id = $request->user_id;
@@ -33,8 +47,11 @@ class TransactionController extends Controller
         $data->comments = $request->comments;
         $data->save();
 
+        $remainingQty = $tool->quantity - $request->quantity;
+        $tool->update(['quantity' => $remainingQty]);
+        
         $notification = array(
-            'message'=> 'Transaction added successfully',
+            'message'=> 'Transaction created successfully',
             'alert-type' => 'success',
         );
         return redirect()->route('transaction.view')->with($notification);

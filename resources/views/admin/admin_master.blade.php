@@ -18,6 +18,8 @@
   <!-- Custom styles for this template-->
   <link href="{{ asset('src/css/sb-admin-2.min.css') }}" rel="stylesheet">
   <link href="{{ asset('src/css/custom.css') }}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+ 
 
 </head>
 
@@ -93,6 +95,63 @@
   <!-- Page level custom scripts -->
   <script src="{{ asset('src/js/demo/chart-area-demo.js') }}"></script>
   <script src="{{ asset('src/js/demo/chart-pie-demo.js') }}"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ 
+  <script type="text/javascript">
+    $(function(){
+      $(document).on('click', '#delete', function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You want to delete this data?",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = link
+            Swal.fire(
+              'Deleted!',
+              'Data has been deleted.',
+              'success'
+            )
+          }
+        })
+      })
+    })
+  </script>
+
+  
+
+
+<script>
+ @if(Session::has('message'))
+ var type = "{{ Session::get('alert-type','info') }}"
+ switch(type){
+    case 'info':
+    toastr.info(" {{ Session::get('message') }} ");
+    break;
+
+    case 'success':
+    toastr.success(" {{ Session::get('message') }} ");
+    break;
+
+    case 'warning':
+    toastr.warning(" {{ Session::get('message') }} ");
+    break;
+
+    case 'error':
+    toastr.error(" {{ Session::get('message') }} ");
+    break; 
+ }
+ @endif 
+</script>
 
 </body>
 

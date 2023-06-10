@@ -19,4 +19,15 @@ class Tool extends Model
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }
+
+    protected $fillable = [
+        'name',
+        'category_id',
+        'cost',
+        'quantity',
+        'supplier',
+        'condition',
+        'location',
+        'purchase_date',
+    ];
 }
