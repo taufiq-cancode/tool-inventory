@@ -29,7 +29,9 @@
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('tool.view') }}">All Tools</a>
+                @if(auth()->user()->role == 'admin')
                 <a class="collapse-item" href="{{ route('tool.add') }}">Add Tools</a>
+                @endif
             </div>
             </div>
         </li>
@@ -42,7 +44,9 @@
           <div id="collapseCat" class="collapse" aria-labelledby="headingCat" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="{{ route('category.view') }}">All Categories</a>
+              @if(auth()->user()->role == 'admin')
               <a class="collapse-item" href="{{ route('category.add') }}">Add Categories</a>
+              @endif
           </div>
           </div>
         </li>

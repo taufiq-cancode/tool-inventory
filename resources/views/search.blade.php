@@ -37,9 +37,13 @@
                         <td>{{ $tool->condition }}</td>
                         <td>{{ $tool->location }}</td>
                         <td>
+                          @if(auth()->user()->role == 'admin')
                           <a href="{{ route('tool.edit',$tool->id) }}" class="btn btn-info "> Edit</a>
+                          @endif
                           <a href="{{ route('tool.detail', $tool->id) }}" class="btn btn-warning "> Details</a>
+                          @if(auth()->user()->role == 'admin')
                           <a href="{{ route('tool.delete', $tool->id) }}" class="btn btn-danger "> Delete</a>
+                          @endif
                         </td>
                       </tr>
                       @endforeach

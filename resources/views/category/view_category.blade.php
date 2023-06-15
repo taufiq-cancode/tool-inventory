@@ -30,8 +30,10 @@
               <td class="sorting_1">{{ $category->name }}</td>
               <td class="sorting_1">{{ $category->description }}</td>
               <td>
+                  @if(auth()->user()->role == 'admin')
                 <a href="{{ route('category.edit',$category->id) }}" class="btn btn-info "> Edit</a>
                 <a href="{{ route('category.delete', $category->id) }}" class="btn btn-danger "> Delete</i></a>
+                @endif
               </td>
             </tr>
             

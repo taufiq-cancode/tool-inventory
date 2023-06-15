@@ -12,8 +12,6 @@
               <form class="user" action="{{ route('transaction.store') }}" method="POST" style="width:50%;">
                 @csrf
                 
-                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <label> Tool </label>
@@ -30,7 +28,6 @@
 
                 </div>
                 </div>
-                
                 
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
@@ -49,6 +46,19 @@
                   </div>
                 </div>
                 
+                @if(auth()->user()->role == 'user')
+                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                @else
+                <div class="form-group">
+                  <label>User</label>
+                  <select name="user_id">
+                    @foreach ($users as $user )
+                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                @endif
+
 
                 <div class="form-group">
                   <label>Comments</label>

@@ -24,8 +24,8 @@ class TransactionController extends Controller
 
     public function TransactionStore(Request $request){
                 
-        $toolId = $request->input('tool_id');
-        $transactionQuantity = $request->input('quantity');
+        $toolId = $request->tool_id;
+        $transactionQuantity = $request->quantity;
 
         $tool = Tool::findOrFail($toolId);
 
@@ -38,6 +38,18 @@ class TransactionController extends Controller
             return back()->with($notification);
         }
 
+        
+        switch($request->transaction_type){
+            case 'Check-out':
+            case 'Repair':
+            case 'Maintenance':
+                $remainingQty = $tool->quantity - $request->quantity;
+            break;
+            case 'Check-in':
+                $remainingQty = $tool->quantity + $request->quantity;
+            break; 
+        }
+        
         $data = new Transaction();
         $data->tool_id = $request->tool_id;
         $data->user_id = $request->user_id;
@@ -47,7 +59,6 @@ class TransactionController extends Controller
         $data->comments = $request->comments;
         $data->save();
 
-        $remainingQty = $tool->quantity - $request->quantity;
         $tool->update(['quantity' => $remainingQty]);
         
         $notification = array(
@@ -55,6 +66,7 @@ class TransactionController extends Controller
             'alert-type' => 'success',
         );
         return redirect()->route('transaction.view')->with($notification);
+    
     }
 
     public function TransactionEdit($id){
