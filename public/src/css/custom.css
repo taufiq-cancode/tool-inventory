@@ -51,3 +51,32 @@ form.user .form-control-user {
     border: 1px solid #dddddd;
     color: rgb(43, 43, 43);
 }
+.sidebar-dark #sidebarToggle:hover {
+    background-color: rgba(255, 255, 255, 0.801);
+}
+.sidebar-dark #sidebarToggle {
+    background-color: rgb(66 21 21 / 20%);
+}
+.sidebar #sidebarToggle::after {
+    font-weight: 900;
+    color: white !important;
+}
+form {
+    width: 50%;
+}
+.btn-link {
+    color: #ff0000;
+}
+.btn-link:hover {
+    color: #ff0000;
+    text-decoration: none;
+}
+.tabdiv {
+    overflow-x: auto;
+}
+@media screen and (max-width: 900px) {
+    form {
+        width: 100%;
+        padding: 10px;
+    }
+}

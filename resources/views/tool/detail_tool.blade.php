@@ -18,16 +18,14 @@
                       <h6 style="font-weight: bold">TOOL DETAIL</h4>
                     </div>
                     <div class="card-body">
-                        <ul>
-                                <li><b>Tool Name:</b> {{ $tool->name }}</li>
-                                <li><b>Category:</b> @if($tool->category) {{ $tool->category->name }} @else Uncategorized @endif</li>
-                                <li><b>Cost:</b> N{{ number_format($tool->cost) }}</li>
-                                <li><b>Quantity:</b> {{ $tool->quantity }}</li>
-                                <li><b>Supplier:</b> {{ $tool->supplier }}</li>
-                                <li><b>Location:</b> {{ $tool->location }}</li>
-                                <li><b>Condition:</b> {{ $tool->condition }}</li>
-                                <li><b>Purchase Date:</b> {{ \Carbon\Carbon::parse($tool->purchase_date)->format('Y-m-d') }} </li>
-                        </ul>
+                                <p><b>Tool Name:</b> {{ $tool->name }}</p>
+                                <p><b>Category:</b> @if($tool->category) {{ $tool->category->name }} @else Uncategorized @endif</p>
+                                <p><b>Cost:</b> N{{ number_format($tool->cost) }}</p>
+                                <p><b>Quantity:</b> {{ $tool->quantity }}</p>
+                                <p><b>Supplier:</b> {{ $tool->supplier }}</p>
+                                <p><b>Location:</b> {{ $tool->location }}</p>
+                                <p><b>Condition:</b> {{ $tool->condition }}</p>
+                                <p><b>Purchase Date:</b> {{ \Carbon\Carbon::parse($tool->purchase_date)->format('Y-m-d') }} </p>
                     </div>
                   </div>
                 </div>
@@ -39,7 +37,7 @@
                         <div class="card-body">
 
                           @if ($tool->transactions->count() > 0)
-                          
+                          <div class="tabdiv">
                           <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                             <thead>
                               <tr role="row">
@@ -69,6 +67,7 @@
                              
                             </tbody>
                           </table>
+                          </div>
                           @else
                           <p>No transactions found for this tool. </p>
                           @endif

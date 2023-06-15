@@ -9,7 +9,7 @@
     <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-              <form class="user" action="{{ route('category.update', $editData->id) }}" method="POST" style="width:50%;">
+              <form class="user" action="{{ route('category.update', $editData->id) }}" method="POST">
                 @csrf
                 
                 <div class="form-group">

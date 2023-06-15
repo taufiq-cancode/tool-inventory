@@ -6,6 +6,9 @@
 @endphp
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
+          <div class="sidebar-brand-icon">
+            <img src="{{ asset('src/img/logo2.png') }}" width="70px" style="padding: 10px">
+          </div>
           <div class="sidebar-brand-text ">NIDACO</div>
         </a>
   
@@ -30,7 +33,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('tool.view') }}">All Tools</a>
                 @if(auth()->user()->role == 'admin')
-                <a class="collapse-item" href="{{ route('tool.add') }}">Add Tools</a>
+                <a class="collapse-item" href="{{ route('tool.add') }}">Add Tool</a>
                 @endif
             </div>
             </div>
@@ -45,7 +48,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="{{ route('category.view') }}">All Categories</a>
               @if(auth()->user()->role == 'admin')
-              <a class="collapse-item" href="{{ route('category.add') }}">Add Categories</a>
+              <a class="collapse-item" href="{{ route('category.add') }}">Add Category</a>
               @endif
           </div>
           </div>
@@ -59,7 +62,7 @@
           <div id="collapseTran" class="collapse" aria-labelledby="headingTran" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="{{ route('transaction.view') }}">All Transactions</a>
-              <a class="collapse-item" href="{{ route('transaction.add') }}">Add Transactions</a>
+              <a class="collapse-item" href="{{ route('transaction.add') }}">Add Transaction</a>
           </div>
           </div>
         </li>
